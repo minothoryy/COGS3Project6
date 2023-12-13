@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wedding Planner</title>
+</head>
+
+<body>
+    <h1>Wedding Table Guest Distribution</h1>
+
+    <script>
+        function distributeGuestsatTables(totalGuests, numberOfTables) {
+            let seatingArrangement = guestsPerTable / 4;
+            let guestsPerTable = Math.floor(totalGuests / seatingArrangement);
+            let leftoverGuests = totalGuests %  numberOfTables ;
+
+
+
+            return {
+                totalGuests: totalGuests,
+                numberOfTables: numberOfTables,
+                guestsPerTable: guestsPerTable,
+                leftoverGuests: leftoverGuests
+            };
+        }
+
+        // A prompt is easy to get user input
+        let totalGuestsInput = prompt("How many guests do you have?");
+        let numberOfTablesInput = prompt("How many tables do you want?");
+
+        // convert the input into numeric data types
+        let totalGuests = parseInt(totalGuestsInput);
+        let numberOfTables = parseInt(numberOfTablesInput);
+    
+
+        // it is good programming practice to validate the input 
+        if (isNaN(totalGuests) || isNaN(numberOfTables) || totalGuests < 0 || numberOfTables <= 0) {
+            alert("Invalid input. Please enter valid positive numbers.");
+        } else {
+            let result = distributeGuestsatTables(totalGuests, numberOfTables);
+            alert(`Your ${totalGuests} guests will be seated as follows: ${numberOfTables} tables of ${result.guestsPerTable}, and --- table of ${result.leftoverGuests}.`);
+        }
+    </script>
+</body>
+
+</html>
